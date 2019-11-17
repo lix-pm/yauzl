@@ -422,7 +422,8 @@ ZipFile.prototype._readEntry = function() {
           // allow backslash
           entry.fileName = entry.fileName.replace(/\\/g, "/");
         }
-        var errorMessage = validateFileName(entry.fileName, self.validateFileNameOptions);
+
+        var errorMessage = exports.validateFileName(entry.fileName);
         if (errorMessage != null) return emitErrorAndAutoClose(self, new Error(errorMessage));
       }
       self.emit("entry", entry);
